@@ -6,8 +6,12 @@
 package presentation.controleur;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -22,6 +26,7 @@ import predictif.dao.JpaUtil;
 import predictif.metier.modele.Client;
 import predictif.metier.modele.Employe;
 import predictif.metier.modele.Horoscope;
+import predictif.metier.modele.Medium;
 import predictif.metier.modele.PAmour;
 import predictif.metier.modele.PSante;
 import predictif.metier.modele.PTravail;
@@ -157,18 +162,57 @@ public class MainServlet extends HttpServlet {
                         break;
                     case "validate":
                         client_id_param = request.getParameter("client_id");
+                        String medium_id_param = request.getParameter("medium_id");
+                        System.out.println("@@@@@@@@@@@ Validate @@@@@@@@@@@");
+                        System.out.println(medium_id_param);
+                        Long medium_id;
                         try {
                             client_id = Long.decode(client_id_param);
                         } catch(Exception e) {
                             throw new IOException();
                         }
+                        try {
+                            medium_id = Long.decode(medium_id_param);
+                        } catch(Exception e) {
+                            throw new IOException();
+                        }
+                        Medium medium = Service.getMedium(medium_id);
                         Client currentClient = Service.getClient(client_id);
                         mapClientHoro = (Map<Long,Horoscope>)session.getAttribute("mapClientHoro");
                         currentHoro = mapClientHoro.get(client_id);
+                        currentHoro.setAuteur(medium);
+                        
+                        GregorianCalendar calendar = new GregorianCalendar();
+                        
+                        String dateChaine = calendar.get(GregorianCalendar.DAY_OF_MONTH)+"-"+
+                                            calendar.get(GregorianCalendar.MONTH)+"-"+
+                                            calendar.get(GregorianCalendar.YEAR);
+                        DateFormat formatter ; 
+                        Date date = new Date() ; 
+                        formatter = new SimpleDateFormat("dd-MM-yy");
+                        {
+                            try {
+                                date = formatter.parse(dateChaine);
+                            } catch (ParseException ex) {
+                                Logger.getLogger(MainServlet.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                        
+                        currentHoro.setDate(date);
+                        Service.ajouterHoroscope(currentHoro);
                         Service.ajouterHoroscopeClient(currentHoro, currentClient);
                         
                         break;
                     case "history":
+                        client_id_param = request.getParameter("client_id");
+                        try {
+                            client_id = Long.decode(client_id_param);
+                        } catch(Exception e) {
+                            throw new IOException();
+                        }
+                        currentClient = Service.getClient(client_id);
+                        request.setAttribute("client",currentClient);
+                        request.getRequestDispatcher("WEB-INF/employe_history.jsp").forward(request, response);
                         break;
                     case "select_prediction":
                         client_id_param = request.getParameter("client_id");
@@ -197,13 +241,19 @@ public class MainServlet extends HttpServlet {
                                 break;
                             case "travail":
                                 if(currentHoro.getTravail()!=null)
-                                    id_prediction = currentHoro.getSante().getId();
+                                    id_prediction = currentHoro.getTravail().getId();
                                 break;
                         }
                         
                         
                         List<Prediction> predictions;
                         predictions = Service.getPredictions(1, prediction_type);
+                        for(Prediction p : predictions)
+                        {
+                            System.out.println("-----Prediction");
+                            System.out.println(p.getDescription());
+                            System.out.println(p.getId());
+                        }
                         request.setAttribute("predictions", predictions);
                         request.setAttribute("client_id", client_id);
                         request.setAttribute("prediction_type", prediction_type_param);
