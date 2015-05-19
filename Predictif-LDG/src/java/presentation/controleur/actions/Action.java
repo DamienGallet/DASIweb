@@ -12,5 +12,9 @@ import javax.servlet.http.HttpServletRequest;
  * @author Damien
  */
 public abstract class Action {
+
+    public Action() {
+    }
+    
     public abstract boolean execute(HttpServletRequest request);
 }

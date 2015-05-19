@@ -59,7 +59,26 @@ public class MainServlet extends HttpServlet {
         } catch(Exception e) {
             ressource = "";
         }
+        
         String todo = request.getParameter("todo");
+        if(todo==null) {
+            todo ="";
+        }
+        
+        String id_client_param = request.getParameter("client_id");
+        long id_client;
+        if(id_client_param==null) {
+            id_client = -1;
+        } else {
+            try {
+                id_client = Long.decode(id_client_param);
+            } catch(Exception e) {
+                id_client = -1;
+            }
+        }
+        request.setAttribute("client_id", id_client);
+        
+        
         Contexte ctx = null;
         switch (ressource){
             case "":
@@ -83,7 +102,9 @@ public class MainServlet extends HttpServlet {
         {
             Action action = ctx.getAction(todo);
             String vue = ctx.getVue(todo);
-            action.execute(request);
+            if(action!=null) {
+                action.execute(request);
+            }
             request.getRequestDispatcher(vue).forward(request, response);
         }
         

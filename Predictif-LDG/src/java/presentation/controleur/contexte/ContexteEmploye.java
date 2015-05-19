@@ -5,26 +5,6 @@
  */
 package presentation.controleur.contexte;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import predictif.metier.modele.Client;
-import predictif.metier.modele.Employe;
-import predictif.metier.modele.Horoscope;
-import predictif.metier.modele.Medium;
-import predictif.metier.modele.PAmour;
-import predictif.metier.modele.PSante;
-import predictif.metier.modele.PTravail;
-import predictif.metier.modele.Prediction;
-import predictif.metier.service.Service;
-import presentation.controleur.MainServlet;
 import presentation.controleur.actions.Action;
 import presentation.controleur.actions.ActionBindPrediction;
 import presentation.controleur.actions.ActionHistory;
@@ -33,7 +13,6 @@ import presentation.controleur.actions.ActionLogout;
 import presentation.controleur.actions.ActionPrintPrediction;
 import presentation.controleur.actions.ActionSelectClient;
 import presentation.controleur.actions.ActionValidateHoro;
-import presentation.utilitaires.Utilitaires;
 
 /**
  *
@@ -43,7 +22,7 @@ public class ContexteEmploye extends Contexte {
 
     @Override
     public Action getAction(String todo) {
-        Action action = null;
+        Action action;
         switch(todo) {
             case "action_login":
                 action = new ActionLogin();
@@ -76,7 +55,34 @@ public class ContexteEmploye extends Contexte {
 
     @Override
     public String getVue(String todo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String vue="WEB-INF/";
+        switch(todo) {
+            case "action_login":
+                vue += "employe_select_client.jsp";
+                break;
+            case "select_client":
+                vue += "employe_horo.jsp";
+                break;
+            case "select_prediction":
+                vue += "employe_predictions.jsp";
+                break;
+            case "bind_prediction":
+                vue += "employe_horo.jsp";
+                break;
+            case "history":
+                vue += "employe_history.jsp";;
+                break;
+            case "validate":
+                vue += "employe.jsp";
+                break;
+            case "logout":
+                vue += "employe.jsp";
+                break;
+            default:
+                vue += "employe.jsp";
+                break;
+        }
+        return vue;
     }
     
 }
