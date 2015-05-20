@@ -6,6 +6,8 @@
 package presentation.controleur.contexte;
 
 import presentation.controleur.actions.Action;
+import presentation.controleur.actions.ActionForm;
+import presentation.controleur.actions.ActionRegister;
 
 /**
  *
@@ -15,13 +17,33 @@ public class ContexteClient extends Contexte {
 
     @Override
     public Action getAction(String todo) {
-        Action action = null;
+        Action action;
+        switch(todo) {
+            case "valid_inscr":
+                action = new ActionRegister();
+                break;
+            default:
+                action = new ActionForm();
+                break;
+        }
         return action;
     }
 
     @Override
     public String getVue(String todo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String vue="WEB-INF/";
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&");
+        System.out.println(todo);
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&");
+        switch(todo) {
+            case "valid_inscr":
+                vue += "index.jsp";
+                break;
+            default:
+                vue += "inscriptionClient.jsp";
+                break;
+        }
+        return vue;
     }
     
 }

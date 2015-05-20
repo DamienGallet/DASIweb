@@ -22,9 +22,6 @@ import predictif.metier.service.Service;
  */
 public class ActionLogin extends Action {
 
-    public ActionLogin() {
-        System.out.println("TOTO");
-    }
     @Override
     public boolean execute(HttpServletRequest request) 
     {

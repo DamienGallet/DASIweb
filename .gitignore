@@ -1,3 +1,7 @@
 # Configuration files
 *.xml
 *.MF
+
+#Build path
+Predictif-LDG/build
+

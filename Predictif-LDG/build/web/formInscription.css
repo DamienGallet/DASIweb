@@ -30,7 +30,3 @@ form input {
 form input.sansLabel {
     margin-left: 200px;
 }
-
-form .requis {
-    color: #c00;
-}
