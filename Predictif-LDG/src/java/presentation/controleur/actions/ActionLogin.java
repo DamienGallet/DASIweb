@@ -45,8 +45,11 @@ public class ActionLogin extends Action {
             //TODO
             return false;
         }
+        if(emp==null)
+            return false;
         session.setAttribute("emp", emp);
-
+        
+        
         // Definition d'un tableau persistant conservant les horoscopes
         Map<Long,Horoscope> mapClientHoro = new TreeMap<Long,Horoscope>();
         Map<Long,Client> mapClients = new TreeMap<Long,Client>();

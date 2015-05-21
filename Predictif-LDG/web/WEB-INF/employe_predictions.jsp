@@ -7,13 +7,11 @@
 <%@page import="java.util.List"%>
 <%@page import="predictif.metier.modele.Prediction"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Employe | Prédictions <%= request.getParameter("type_prediction") %></title>
-    </head>
-    <body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% String title = "Employé | Prédictions";
+   request.setAttribute("title", title);%>
+<%@ include file="header.jsp" %>
+
         <% List<Prediction> predictions = (List<Prediction>)request.getAttribute("predictions"); 
            long previousPredId = 0;
            previousPredId = (Long)request.getAttribute("id_previous_prediction");%>
@@ -35,5 +33,4 @@
         <input type="reset" value="Annuler"/>
         </form>
         </p>
-    </body>
-</html>
+<%@ include file="footer.jsp" %>

@@ -5,14 +5,11 @@
 --%>
 <%@page import="predictif.metier.modele.Medium"%>
 <%@ page pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Test</title>
-    </head>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% String title = "Inscription"; 
+   request.setAttribute("title", title);%>
+<%@ include file="header.jsp" %>
 
-    <body>
         <p>Ceci est une page générée depuis une JSP.</p>
         <p>
 
@@ -21,5 +18,4 @@
             Récupération du bean :
 
         </p>
-    </body>
-</html>
+<%@ include file="footer.jsp" %>

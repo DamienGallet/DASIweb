@@ -36,7 +36,6 @@ public class ActionRegister extends Action{
     
     @Override
     public boolean execute(HttpServletRequest request) {
-        System.out.println("########### INSCRIPTION CLIENT ###########");
         String nom = request.getParameter(CHAMP_NOM);
         String prenom = request.getParameter(CHAMP_PRENOM);
         String civilite = request.getParameter(RADIO_CIVILITE);
@@ -46,6 +45,8 @@ public class ActionRegister extends Action{
         String mail = request.getParameter(CHAMP_MAIL);
         String medium = request.getParameter(OPTION_MEDIUM);
         if(nom==null || prenom==null || civilite==null || naissance==null || adresse==null || telephone==null || mail==null || medium==null) {
+            Action action = new ActionForm();
+            action.execute(request);
             return false;
         }
 
@@ -55,6 +56,8 @@ public class ActionRegister extends Action{
         try {
             date = formatter.parse(naissance);
         } catch (ParseException ex) {
+            Action action = new ActionForm();
+            action.execute(request);
             return false;
         }
         String coupe = naissance.substring(3, 5);
@@ -62,6 +65,8 @@ public class ActionRegister extends Action{
         Service.ajouterSigneAstro(signe);
         Medium m = Service.getMedium(Long.parseLong(medium));
         if(m==null){
+            Action action = new ActionForm();
+            action.execute(request);
             return false;
         }
         

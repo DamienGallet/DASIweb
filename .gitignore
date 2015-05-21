@@ -5,3 +5,8 @@
 #Build path
 Predictif-LDG/build
 
+#Library path
+PredictIF/build
+PredictIF/dist
+PredictIF/nbproject
+

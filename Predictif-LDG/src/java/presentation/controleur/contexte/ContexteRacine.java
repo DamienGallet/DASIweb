@@ -19,7 +19,7 @@ public class ContexteRacine extends Contexte{
     }
 
     @Override
-    public String getVue(String todo) {
+    public String getVue(String todo, boolean success) {
         return "WEB-INF/index.jsp";
     }
     

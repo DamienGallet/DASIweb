@@ -4,17 +4,14 @@
     Author     : Damien
 --%>
 <%@page import="java.util.ArrayList"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@page import="predictif.metier.modele.Client"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Employe | Selectionner client</title>
-    </head>
-    <body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% String title = "Employé | Selectionner client";
+   request.setAttribute("title", title);%>
+<%@ include file="header.jsp" %>
+
         <% List<Client> listeClients = (List<Client>)request.getAttribute("clients"); %>
         <h1>Selectionnez un client</h1>
         <form action="employe?todo=select_client" method="POST">
@@ -27,5 +24,4 @@
             <button type="submit">Login</button>
             <button type='reset'>Annuler</button>
         </form>
-    </body>
-</html>
+<%@ include file="footer.jsp" %>

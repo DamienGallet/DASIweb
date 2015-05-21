@@ -30,14 +30,14 @@ public class ContexteClient extends Contexte {
     }
 
     @Override
-    public String getVue(String todo) {
+    public String getVue(String todo, boolean success) {
         String vue="WEB-INF/";
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&");
-        System.out.println(todo);
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&");
         switch(todo) {
             case "valid_inscr":
-                vue += "index.jsp";
+                if(success)
+                    vue += "index.jsp";
+                else
+                    vue += "inscriptionClient.jsp";
                 break;
             default:
                 vue += "inscriptionClient.jsp";

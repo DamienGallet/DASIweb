@@ -5,13 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>BOOOOMMMP</title>
-    </head>
-    <body>
-        <h1>An error has occured</h1>
-    </body>
-</html>
+<% String title = "BOOOMMP"; %>
+<%@include file="header.jsp"  %>
+<% request.setAttribute("title", title);%>
+<h1>An error has occured</h1>
+<%@ include file="footer.jsp" %>

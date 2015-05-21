@@ -8,6 +8,7 @@ package presentation.controleur.actions;
 import java.io.IOException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import predictif.metier.modele.Client;
 import predictif.metier.modele.Horoscope;
 import predictif.metier.modele.PAmour;
 import predictif.metier.modele.PSante;
@@ -60,6 +61,11 @@ public class ActionBindPrediction extends Action {
             default :
                 return false;
         }
+        Client client = Service.getClient(client_id);
+        if(client==null)
+        {return false;}
+        request.setAttribute("client",client);
+        
         return true;
     }
 }

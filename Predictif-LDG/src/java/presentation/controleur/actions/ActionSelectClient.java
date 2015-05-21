@@ -8,7 +8,9 @@ package presentation.controleur.actions;
 import java.io.IOException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import predictif.metier.modele.Client;
 import predictif.metier.modele.Horoscope;
+import predictif.metier.service.Service;
 
 /**
  *
@@ -26,6 +28,10 @@ public class ActionSelectClient extends Action {
         Horoscope currentHoro = mapClientHoro.get(client_id);
         request.setAttribute("currentHoro", currentHoro);
         request.setAttribute("client_id", client_id);
+        Client client = Service.getClient(client_id);
+        if(client==null)
+        {return false;}
+        request.setAttribute("client",client);
         return true;
     }
 }

@@ -54,8 +54,10 @@ public class ContexteEmploye extends Contexte {
     }
 
     @Override
-    public String getVue(String todo) {
+    public String getVue(String todo, boolean success) {
         String vue="WEB-INF/";
+        if(!success)
+            return vue+="error.jsp";
         switch(todo) {
             case "action_login":
                 vue += "employe_select_client.jsp";

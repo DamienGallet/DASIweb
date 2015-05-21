@@ -81,16 +81,15 @@ public class MainServlet extends HttpServlet {
         if(ctx!=null)
         {
             Action action = ctx.getAction(todo);
-            String vue = ctx.getVue(todo);
             boolean success = true;
             if(action!=null) {
                 success = action.execute(request);
             }
-            if(success) {
-                request.getRequestDispatcher(vue).forward(request, response);
-            } else {
-                request.getRequestDispatcher(ERROR_VIEW).forward(request,response);
-            }
+            String vue = ctx.getVue(todo,success);
+            System.out.println("Je veux la vue");
+            System.out.println("VUE :"+ vue);
+            System.out.println(request);
+            request.getRequestDispatcher(vue).forward(request, response);
         }
         
     }

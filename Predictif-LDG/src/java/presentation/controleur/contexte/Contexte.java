@@ -16,5 +16,5 @@ import presentation.controleur.actions.Action;
  */
 public abstract class Contexte {
     public abstract Action getAction(String todo);
-    public abstract String getVue(String todo);
+    public abstract String getVue(String todo, boolean success);
 }

@@ -5,13 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% String title = "Inscription"; 
+   request.setAttribute("title", title);%>
+<%@ include file="header.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inscription | Succes</title>
     </head>
     <body>
         <h1>Bravo, vous avez réussi à vous inscrire ! </h1>
-    </body>
-</html>
+<%@ include file="footer.jsp" %>
