@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+
+
 /**
  *
  * @author slegras
@@ -31,9 +33,11 @@ public abstract class Prediction implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    protected String description;
+    
+    private final String DType;
     protected int force;
+    protected String description;
+
     
     public Long getId() {
         return id;
@@ -71,11 +75,13 @@ public abstract class Prediction implements Serializable {
     	public Prediction(String description, int force){
 		this.description = description;
 		this.force = force;
+                this.DType = "";
 	}
 	
 	public Prediction(){
 		this.description = "";
 		this.force = 0;
+                this.DType = "";
 	}
 	
 	//Getters et setters

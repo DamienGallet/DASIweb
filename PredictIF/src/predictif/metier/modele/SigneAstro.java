@@ -17,21 +17,23 @@ import javax.persistence.Id;
  * @author slegras
  */
 /**
- * Cette classe modelise un signe astrologique
- * Un signe astrologique possede un nom et un mois (entier entre 1 et 12)
+ * Cette classe modelise un signe astrologique Un signe astrologique possede un
+ * nom et un mois (entier entre 1 et 12)
+ *
  * @author orlando_db
  *
  */
 @Entity
 public class SigneAstro implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private String nom;
+    private String element;
     private String mois;
- 
+    private String nom;
+
     public Long getId() {
         return id;
     }
@@ -40,10 +42,10 @@ public class SigneAstro implements Serializable {
         this.id = id;
     }
 
-    public String getNom(){
-		return nom;
-	}
-    
+    public String getNom() {
+        return nom;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -68,43 +70,55 @@ public class SigneAstro implements Serializable {
     public String toString() {
         return "predictif.SigneAstro[ id=" + id + " ]";
     }
-    
-    public void calculSigne(){
+
+    public void calculSigne() {
         switch (mois) {
-            case "01" : nom = "capricorne" ;
+            case "01":
+                nom = "capricorne";
                 break;
-            case "02" : nom = "verseau" ;
+            case "02":
+                nom = "verseau";
                 break;
-            case "03" : nom = "poisson" ;
+            case "03":
+                nom = "poisson";
                 break;
-            case "04" : nom = "bélier" ;
+            case "04":
+                nom = "bélier";
                 break;
-            case "05" : nom = "taureau" ;
+            case "05":
+                nom = "taureau";
                 break;
-            case "06" : nom = "gémeaux" ;
+            case "06":
+                nom = "gémeaux";
                 break;
-            case "07" : nom = "cancer" ;
+            case "07":
+                nom = "cancer";
                 break;
-            case "08" : nom = "lion" ;
+            case "08":
+                nom = "lion";
                 break;
-            case "09" : nom = "vierge" ;
+            case "09":
+                nom = "vierge";
                 break;
-            case "10" : nom = "balance" ;
+            case "10":
+                nom = "balance";
                 break;
-            case "11" : nom = "scorpion" ;
+            case "11":
+                nom = "scorpion";
                 break;
-            case "12" : nom = "sagitaire" ;
+            case "12":
+                nom = "sagitaire";
                 break;
-        } 
+        }
     }
-    
-    	public SigneAstro(String mois){
-		this.mois = mois;
-	}
-	
-	public SigneAstro(){
-		this.nom = "";
-		this.mois = "";
-	}
-    
+
+    public SigneAstro(String mois) {
+        this.mois = mois;
+    }
+
+    public SigneAstro() {
+        this.nom = "";
+        this.mois = "";
+    }
+
 }

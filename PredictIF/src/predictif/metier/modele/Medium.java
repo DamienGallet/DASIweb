@@ -30,9 +30,11 @@ public class Medium implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private String nom;
+    
     private String description;
+    private String nom;
+    private final String talent;
+
         
     public Long getId() {
         return id;
@@ -75,6 +77,7 @@ public class Medium implements Serializable {
 	public Medium(String nom, String description){
 		this.nom = nom;
 		this.description = description;
+                this.talent = "";
 	}
 	
 	/**
@@ -83,6 +86,7 @@ public class Medium implements Serializable {
 	public Medium(){
 		this.nom = "";
 		this.description = "";
+                this.talent = "";
 	}
 	
 	//Getters
