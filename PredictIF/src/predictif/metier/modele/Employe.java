@@ -20,16 +20,21 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Employe implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private final String mail;
-    
+    private final String login;
+    private final String motDePasse;
+    private final String nom;
+    private final String prenom;
+
     @OneToMany
     private List<Client> clients;
-    
+
     public Long getId() {
         return id;
     }
@@ -62,63 +67,75 @@ public class Employe implements Serializable {
     public String toString() {
         return "predictif.Employe[ id=" + id + " ]";
     }
-   
-	/**
-	 * Constructeur avec parametre
-	 * @param mail - l'adresse mail de l'employe
-	 */
-	public Employe(String mail){
-		this.mail = mail;
-		this.clients = new ArrayList<>();
-	}
-	
-	/**
-	 * Constructeur sans parametre
-	 */
-	public Employe(){
-		this.mail = "";
-		this.clients = new ArrayList<>();
-	}
-	
-	//Getters and setters
-	/**
-	 * 
-	 * @return - l'adresse mail de l'employe
-	 */
-	public String getMail(){
-		return mail;
-	}
-	
-	/**
-	 * Renvoie la liste de clients affectes a l'employe
-	 * @return - liste de clients affectes a l'employe
-	 */
-	public List<Client> getClients(){
-		return clients;
-	}
-	
-	/**
-	 * Ajoute un client a l'employe
-	 * @param c - le client a ajouter
-	 */
-	public void ajouterClient(Client c){
-		this.clients.add(c);
-	}
-	
-	/**
-	 * Afficher l'employe (numero et mail)
-	 */
-	public void afficher(){
-		System.out.println("Employe numero: " + id);
-		System.out.println("Mail: " + mail);
-	}
-        
-        /**
-	 * Ajoute un client à l'employé
-	 * @param c - client à ajouter
-	 */
-	public void ajouteClient(Client c){
-		this.clients.add(c);
-	}
-    
+
+    /**
+     * Constructeur avec parametre
+     *
+     * @param mail - l'adresse mail de l'employe
+     */
+    public Employe(String mail) {
+        this.mail = mail;
+        this.login = "";
+        this.motDePasse = "";
+        this.nom = "";
+        this.prenom = "";
+        this.clients = new ArrayList<>();
+    }
+
+    /**
+     * Constructeur sans parametre
+     */
+    public Employe() {
+        this.mail = "";
+        this.login = "";
+        this.motDePasse = "";
+        this.nom = "";
+        this.prenom = "";
+        this.clients = new ArrayList<>();
+    }
+
+    //Getters and setters
+    /**
+     *
+     * @return - l'adresse mail de l'employe
+     */
+    public String getMail() {
+        return mail;
+    }
+
+    /**
+     * Renvoie la liste de clients affectes a l'employe
+     *
+     * @return - liste de clients affectes a l'employe
+     */
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    /**
+     * Ajoute un client a l'employe
+     *
+     * @param c - le client a ajouter
+     */
+    public void ajouterClient(Client c) {
+        this.clients.add(c);
+    }
+
+    /**
+     * Afficher l'employe (numero et mail)
+     */
+    public void afficher() {
+        System.out.println("Employe numero: " + id);
+        System.out.println("Mail: " + mail);
+    }
+
+    /**
+     * Ajoute un client à l'employé
+     *
+     * @param c - client à ajouter
+     */
+    public void ajouteClient(Client c) {
+        this.clients.add(c);
+    }
+
 }
