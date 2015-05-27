@@ -21,7 +21,7 @@
                 <li><input type="radio" value="<%= client.getId() %>" name="client_id"/><%= client.getPrenom()%> <%= client.getNom()%></li>
                 <% } %>
             </ul>
-            <button type="submit">Login</button>
-            <button type='reset'>Annuler</button>
+            <button class="button"  type="submit">Valider</button>
+            <button class="button" type='reset'>Annuler</button>
         </form>
 <%@ include file="footer.jsp" %>

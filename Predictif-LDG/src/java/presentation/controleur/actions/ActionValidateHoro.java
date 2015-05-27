@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import predictif.metier.modele.Client;
+import predictif.metier.modele.Employe;
 import predictif.metier.modele.Horoscope;
 import predictif.metier.modele.Medium;
 import predictif.metier.service.Service;
@@ -60,6 +61,10 @@ public class ActionValidateHoro extends Action {
         
         Service.ajouterHoroscope(currentHoro);
         Service.ajouterHoroscopeClient(currentHoro, currentClient);
+        
+        request.setAttribute("currentHoro", currentHoro);
+        request.setAttribute("success", "L'horoscope a bien été enregistré");
+        request.setAttribute("client", currentClient);
         return true;
     }
 }

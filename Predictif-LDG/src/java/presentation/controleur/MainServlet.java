@@ -86,15 +86,25 @@ public class MainServlet extends HttpServlet {
                 success = action.execute(request);
             }
             String vue = ctx.getVue(todo,success);
-            System.out.println("Je veux la vue");
-            System.out.println("VUE :"+ vue);
-            System.out.println(request);
+            if(vue==null) {
+                vue = getPreviousVue(request);
+            }
+            request.getSession().setAttribute("previousVue", vue);
+            System.out.println(vue);
+            System.out.println(success);
             request.getRequestDispatcher(vue).forward(request, response);
         }
         
     }
     
-    
+    public String getPreviousVue(HttpServletRequest request) {
+        String vue;
+        vue = (String)request.getSession().getAttribute("previousVue");
+        if(vue==null) {
+            vue = "WEB-INF/index.jsp";
+        }
+        return vue;
+    }
     public String getVue(String todo) {
         String vue = "";
         

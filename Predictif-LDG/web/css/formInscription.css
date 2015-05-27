@@ -1,7 +1,32 @@
 /* Général ------------------------------------------------------------------------------------- */
 
 body, p, legend, label, input {
-    font: normal 8pt verdana, helvetica, sans-serif;
+    font: normal 8pt verdana, helvetica, sans-serif; 
+}
+
+h1 {
+    color : white;
+    font-size: 30px;
+    font-weight:lighter;
+}
+
+h2 {
+    color : white;
+    padding: 5px 0px 0px 20px;
+    font-size: 20px;
+    font-style: italic;
+}
+
+body {
+    position : absolute;
+    width : 100%;
+}
+div.main_content {
+    width : 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color : #559FBF;
+    padding : 70px 30px;
 }
 
 fieldset {
@@ -19,14 +44,88 @@ legend {
 form label {
     float: left;
     width: 200px;
-    margin: 3px 0px 0px 0px;
+    margin: 7px 0px 0px 0px;
 }
 
 form input {
-    margin: 3px 3px 0px 0px;
+    margin: 7px 3px 0px 0px;
     border: 1px #999 solid;
 }
 
 form input.sansLabel {
     margin-left: 200px;
+}
+
+.field_error {
+    background-color : #FF9D93;
+}
+
+.field_ok {
+    background-color: white;
+}
+
+/* Buttons -------------------------------------------------------------------------------------- */
+input.button {
+    display: inline-block;
+    padding : 10px 15px 10px 15px;
+    background-color : #1E3945;
+    border : solid thin #112026;
+    color : white;
+}
+
+input.button:hover {
+    background-color: #305B6E;
+}
+
+select {
+    padding : 5px 10px 5px 10px;
+}
+
+/* Error field ---------------------------------------------------------------------------------- */
+div.error {
+    background-color : #784F54;
+    color : white;
+    text-align: left;
+    border: solid 3px #382527;
+}
+
+div.single {
+    padding : 5px 20px 5px 30px;
+    margin : 10px;
+}
+
+div.success {
+    background-color : #318F17;
+    color : white;
+    text-align: left;
+    border: solid 3px #0E2907;
+}
+
+/* Table ----------------------------------------------------------------------------------------- */
+
+td{
+    padding: 4px 10px 4px 10px; 
+    text-align : center;
+}
+tr{
+    margin : 1px 0px 1px 0px;
+    background-color: #C2D6D6;
+}
+thead {
+    font-weight: bold;
+}
+thead td {
+    background-color: #7D8A8A;
+    color : white;
+}
+
+.select_type_pred {
+    width : 50%;
+    text-align: center;
+}
+
+.select_type_pred a{
+    font-size: 15px;
+    color : #C2D6D6;
+    text-variant: small-caps;
 }

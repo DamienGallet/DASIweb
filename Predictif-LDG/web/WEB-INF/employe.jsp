@@ -15,7 +15,7 @@
             <label name='emp_id'>Numero d'employe</label>
             <input type="text" name="emp_id"/>
             
-            <button type="submit">Login</button>
-            <button type='reset'>Annuler</button>
+            <button class="button" type="submit">Login</button>
+            <button class="button" type='reset'>Annuler</button>
         </form>
 <%@ include file="footer.jsp" %>

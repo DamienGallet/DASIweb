@@ -29,8 +29,8 @@
             </tr>
             <% } %>
         </table>
-        <input type="submit" value="Valider"/>
-        <input type="reset" value="Annuler"/>
+        <input class="button"  type="submit" value="Valider"/>
+        <input class="button"  type="reset" value="Annuler"/>
         </form>
         </p>
 <%@ include file="footer.jsp" %>

@@ -22,12 +22,13 @@
         <h1>Historique des predictions</h1>
         <h2><%= client.getPrenom() %> <%= client.getNom() %></h2>
         <table>
-            <header>
+            <thead>
                 <td>Date</td>
                 <td>Prédiction amour</td>
                 <td>Prédiction santé</td>
                 <td>Prédiction travail</td>
-            </header>
+            </thead>
+            <tbody>
             <% for(Horoscope horoscope : client.getHistorique()) { %>
             <tr>
                 <% Date dateHoro = horoscope.getDate(); if(dateHoro==null){dateHoro = new Date();} %>
@@ -37,5 +38,6 @@
                 <td><%= horoscope.getTravail().getDescription() %></td>
             </tr>
             <% } %>
+            </tbody>
         </table>
 <%@ include file="footer.jsp" %>

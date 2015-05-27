@@ -75,7 +75,7 @@ public class ContexteEmploye extends Contexte {
                 vue += "employe_history.jsp";;
                 break;
             case "validate":
-                vue += "employe.jsp";
+                vue += "employe_messageValid.jsp";
                 break;
             case "logout":
                 vue += "employe.jsp";
